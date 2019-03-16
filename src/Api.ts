@@ -32,7 +32,7 @@ class Api {
   listPosts(): Promise<Post[]> {
     return this.fetch({
       url: "/posts",
-      params: { media: "slack", channelId: "C8AH7K99U" }
+      params: { media: "slack", channelId: "C02HH1NL9" }
     }).then(({ data }) => {
       return data;
     });
