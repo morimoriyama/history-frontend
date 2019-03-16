@@ -7,6 +7,7 @@ import PostImage from "./components/PostImage";
 import api from "./Api";
 import { Post } from "./types/Post";
 import Loading from "./components/Loading";
+import Layout, { Area, Padding } from "./components/GridLayout";
 
 const Wrapper = styled.div`
   padding: 100px 0;
@@ -27,47 +28,50 @@ const Wrapper = styled.div`
   > .paaaaage {
     height: calc(100% - 60px);
     display: flex;
-
-    > * {
-      &:first-child {
-        margin-left: 10vw;
-      }
-    }
   }
 `;
 
 const Exhibition: React.FC<RouteComponentProps> = props => {
   const [posts, setPosts] = useState<Post[]>([]);
 
-  useEffect(() => {
-    api
-      .listPosts()
-      .then(posts => {
-        setPosts(
-          posts.filter(post => {
-            if (
-              ["png", "jpg", "mp4", "text"].includes(post.type.toLowerCase())
-            ) {
-              return true;
-            }
-          })
-        );
-      })
-      .catch(err => {
-        if (err.status === 401) {
-          props.history.push("/auth");
-          localStorage.removeItem("slackAccessToken");
-        }
-      });
-  }, []);
+  // useEffect(() => {
+  //   api
+  //     .listPosts()
+  //     .then(posts => {
+  //       setPosts(
+  //         posts.filter(post => {
+  //           if (
+  //             ["png", "jpg", "mp4", "text"].includes(post.type.toLowerCase())
+  //           ) {
+  //             return true;
+  //           }
+  //         })
+  //       );
+  //     })
+  //     .catch(err => {
+  //       if (err.status === 401) {
+  //         props.history.push("/auth");
+  //         localStorage.removeItem("slackAccessToken");
+  //       }
+  //     });
+  // }, []);
 
   return (
     <>
-      <Loading isShowing={!posts.length} />
+      {/* <Loading isShowing={!posts.length} /> */}
 
       <Wrapper>
         <h1>もりもりやまのヒストリー</h1>
         <div className="paaaaage">
+          <Layout>
+            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6].map((n, i) => {
+              return <Area key={i + 1} gridArea={`g${i + 1}`} />;
+            })}
+            {[1, 2].map((n, i) => {
+              return <Padding key={i + 1} gridArea={`p${i + 1}`} />;
+            })}
+          </Layout>
+
           {posts.map(post => {
             if (post.type === "text") {
               return <PostText key={post.postId} post={post} />;
