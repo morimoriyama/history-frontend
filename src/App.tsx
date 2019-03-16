@@ -1,4 +1,6 @@
 import "ress";
+import "react-grid-layout/css/styles.css";
+import "react-resizable/css/styles.css";
 import * as React from "react";
 import { createGlobalStyle } from "styled-components";
 import {
