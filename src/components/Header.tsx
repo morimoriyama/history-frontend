@@ -2,7 +2,7 @@ import * as React from "react";
 import styled from "styled-components";
 
 const Wrapper = styled.header`
-  height: 60px;
+  height: 80px;
   position: fixed;
   top: 0;
   left: 0;
@@ -30,6 +30,13 @@ const Header: React.FC = props => {
       <div className="logo">
         <span className="icon">🕑</span>HISTORY
       </div>
+      <button
+        onClick={() => {
+          localStorage.removeItem("slackAccessToken");
+        }}
+      >
+        logout
+      </button>
     </Wrapper>
   );
 };

@@ -16,7 +16,7 @@ const Wrapper = styled.div`
 
   &,
   * {
-    transition: all 0.3s cubic-bezier(0.78, -0.73, 0.59, 0.99);
+    transition: all 1s cubic-bezier(0.78, -0.73, 0.59, 0.99);
   }
 
   > .inner {
@@ -95,6 +95,7 @@ const Wrapper = styled.div`
     !props.isShowing &&
     css`
       opacity: 0;
+      visibility: hidden;
       transform: translateY(-16px);
     `}
 

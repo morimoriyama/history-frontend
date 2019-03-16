@@ -1,16 +1,10 @@
 import "ress";
 import * as React from "react";
 import { createGlobalStyle } from "styled-components";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Redirect
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Login from "./Login";
 import Exhibition from "./Exhibition";
 import Template from "./Template";
-import Header from "./components/Header";
-import Loading from "./components/Loading";
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -29,25 +23,15 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 const App: React.FC = () => {
-  const [isLoading, setIsLoading] = React.useState<boolean>(false);
-
-  React.useEffect(() => {
-    setIsLoading(true);
-
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 3000);
-  }, []);
-
   return (
     <>
       <GlobalStyle />
 
-      <Loading isShowing={isLoading} />
       <Template
         render={() => (
           <Router>
             <Switch>
+              <Route exact path="/auth" component={Login} />
               <Route exact path="/" component={Exhibition} />
             </Switch>
           </Router>
