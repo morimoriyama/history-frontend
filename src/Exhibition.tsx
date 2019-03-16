@@ -32,10 +32,6 @@ const Wrapper = styled.div`
       &:first-child {
         margin-left: 10vw;
       }
-
-      /* &:last-child {
-        margin-right: 10vw;
-      } */
     }
   }
 `;
