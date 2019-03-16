@@ -4,8 +4,14 @@ export type Post = {
   userName?: string;
   userIcon?: string;
   text?: string;
-  attachedSourceUrls: string[];
+  attachedSources: AttachedSources[];
   postedAt?: Date;
   media?: string; // e.g. "slack"
   sourceUrl?: string; // e.g. "https://aidemy.slack.com/archives/C02HH1NL9/p1552718218082500"
+};
+
+export type AttachedSources = {
+  url: string;
+  originalHeight: number;
+  originalWidth: number;
 };

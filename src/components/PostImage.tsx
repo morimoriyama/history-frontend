@@ -55,7 +55,7 @@ const PostImage: React.FC<{
 
   return (
     <Wrapper>
-      <img className="post-image" src={post.attachedSourceUrls[0]} />
+      <img className="post-image" src={post.attachedSources[0].url} />
       <div className="content-layer">
         <PostContent post={post} color="white" className="post-content" />
       </div>
