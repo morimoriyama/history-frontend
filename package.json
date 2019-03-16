@@ -5,7 +5,9 @@
   "license": "MIT",
   "scripts": {
     "dev": "parcel public/index.html",
-    "now-build": "parcel build public/index.html"
+    "build": "parcel build public/index.html",
+    "now-build": "npm run build",
+    "deploy": "now"
   },
   "dependencies": {
     "axios": "^0.18.0",
