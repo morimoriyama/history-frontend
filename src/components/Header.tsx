@@ -16,13 +16,20 @@ const Wrapper = styled.header`
     margin-left: 40px;
     font-weight: 700;
     color: #222;
+
+    > .icon {
+      font-size: 0.8em;
+      margin-right: 4px;
+    }
   }
 `;
 
 const Header: React.FC = props => {
   return (
     <Wrapper>
-      <div className="logo">HISTORY</div>
+      <div className="logo">
+        <span className="icon">🕑</span>HISTORY
+      </div>
     </Wrapper>
   );
 };
