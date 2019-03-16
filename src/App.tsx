@@ -10,6 +10,7 @@ import {
 import Exhibition from "./Exhibition";
 import Template from "./Template";
 import Header from "./components/Header";
+import Loading from "./components/Loading";
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -28,19 +29,28 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 const App: React.FC = () => {
+  const [isLoading, setIsLoading] = React.useState<boolean>(false);
+
+  React.useEffect(() => {
+    setIsLoading(true);
+
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 3000);
+  }, []);
+
   return (
     <>
       <GlobalStyle />
+
+      <Loading isShowing={isLoading} />
       <Template
         render={() => (
-          <>
-            <Header />
-            <Router>
-              <Switch>
-                <Route exact path="/" component={Exhibition} />
-              </Switch>
-            </Router>
-          </>
+          <Router>
+            <Switch>
+              <Route exact path="/" component={Exhibition} />
+            </Switch>
+          </Router>
         )}
       />
     </>
