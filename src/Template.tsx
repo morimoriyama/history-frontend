@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Header from "./components/Header";
 
 const Wrapper = styled.div`
-  padding: 100px 0;
+  height: 100vh;
 `;
 
 const Template: React.FC<{

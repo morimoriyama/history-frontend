@@ -6,17 +6,13 @@ const Wrapper = styled.div`
   position: relative;
   border-radius: 4px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-  overflow: hidden;
-  max-width: 60%;
-  height: auto;
 
   * {
     transition: all 0.2s ease-out;
   }
 
   > .post-image {
-    max-height: 100%;
-    max-width: 100%;
+    height: 100%;
   }
 
   > .content-layer {

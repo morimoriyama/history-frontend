@@ -27,20 +27,21 @@ const Wrapper = styled.div`
         padding-right: 12px;
       }
 
-      time {
-        font-size: 14px;
-        color: ${(props: WrapperProps) =>
-          props.color === "white" ? "#fff" : "#bbb"};
-      }
-
-      .media {
-        font-size: 14px;
+      a {
         color: ${(props: WrapperProps) =>
           props.color === "white" ? "#fff" : "#bbb"};
 
-        &::before {
-          content: "·";
-          padding: 0 4px;
+        time {
+          font-size: 14px;
+        }
+
+        .media {
+          font-size: 14px;
+
+          &::before {
+            content: "·";
+            padding: 0 4px;
+          }
         }
       }
     }
