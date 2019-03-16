@@ -1,7 +1,10 @@
 import * as React from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import PostText from "./components/PostText";
 import PostImage from "./components/PostImage";
+import api from "./Api";
+import { Post } from "./types/Post";
 
 const Wrapper = styled.div`
   padding: 100px 0;
@@ -36,21 +39,48 @@ const Wrapper = styled.div`
 `;
 
 const Exhibition: React.FC = props => {
+  const [posts, setPosts] = useState<Post[]>([]);
+
+  useEffect(() => {
+    api.listPosts().then(posts => {
+      console.log(
+        posts
+          .map(p => p.type)
+          .reduce(
+            (acc, cur) => {
+              // console.log(acc, cur);
+              return acc[cur] != null
+                ? { ...acc, [cur]: acc[cur] + 1 }
+                : { ...acc, [cur]: 1 };
+            },
+            {} as { [key: string]: number }
+          )
+      );
+      setPosts(
+        posts.filter(post => {
+          if (["png", "jpg", "mp4", "text"].includes(post.type.toLowerCase())) {
+            return true;
+          }
+        })
+      );
+    });
+  }, []);
+
+  console.log("POSTs", posts);
+
+  if (!posts.length) return <div>Loading...</div>;
+
   return (
     <Wrapper>
       <h1>もりもりやまのヒストリー</h1>
       <div className="paaaaage">
-        <PostText />
-        <PostImage />
-        <PostText />
-        <PostText />
-        <PostImage />
-        <PostText />
-        <PostText />
-        <PostImage />
-        <PostText />
-        <PostText />
-        <PostText />
+        {posts.map(post => {
+          if (post.type === "text") {
+            return <PostText key={post.postId} post={post} />;
+          } else if (post.type === "png" || post.type === "jpg") {
+            return <PostImage key={post.postId} post={post} />;
+          }
+        })}
       </div>
     </Wrapper>
   );

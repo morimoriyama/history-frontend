@@ -1,5 +1,7 @@
 import * as React from "react";
 import styled from "styled-components";
+import dayjs from "dayjs";
+import { Post } from "../types/Post";
 
 type Colors = "default" | "white";
 
@@ -49,25 +51,24 @@ const Wrapper = styled.div`
 `;
 
 const PostContent: React.FC<{
+  post: Post;
   color?: Colors;
   className?: string;
 }> = props => {
-  const { color = "default", className } = props;
+  const { post, color = "default", className } = props;
 
   return (
     <Wrapper color={color} className={className}>
-      <img className="user-icon" src={require("../assets/usericon.jpg")} />
+      <img className="user-icon" src={post.userIcon} />
       <div className="item-content">
         <div className="item-header">
-          <span className="user-name">moriyama-k</span>
-          <a href="#">
-            <time>2019/02/19 13:01</time>
-            <span className="media">from Slack</span>
+          <span className="user-name">{post.userName}</span>
+          <a href={post.sourceUrl} target="_blank">
+            <time>{dayjs(post.postedAt).format("YYYY/MM/DD HH:mm")}</time>
+            <span className="media">from {post.media}</span>
           </a>
         </div>
-        <div className="text">
-          いやコンバージョンするかもしれないからコンテンツ周りは話したほうがいいのでは？？
-        </div>
+        <div className="text">{post.text}</div>
       </div>
     </Wrapper>
   );

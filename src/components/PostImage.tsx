@@ -1,12 +1,14 @@
 import * as React from "react";
 import styled from "styled-components";
 import PostContent from "./PostContent";
+import { Post } from "../types/Post";
 
 const Wrapper = styled.div`
   position: relative;
   border-radius: 4px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 
+  &,
   * {
     transition: all 0.2s ease-out;
   }
@@ -17,6 +19,7 @@ const Wrapper = styled.div`
 
   > .content-layer {
     padding: 24px;
+    border-radius: 4px;
     position: absolute;
     top: 0;
     right: 0;
@@ -32,6 +35,8 @@ const Wrapper = styled.div`
   }
 
   &:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+
     .content-layer {
       background-color: rgba(0, 0, 0, 0.5);
 
@@ -43,12 +48,16 @@ const Wrapper = styled.div`
   }
 `;
 
-const PostImage: React.FC = props => {
+const PostImage: React.FC<{
+  post: Post;
+}> = props => {
+  const { post } = props;
+
   return (
     <Wrapper>
-      <img className="post-image" src={require("../assets/image.jpg")} />
+      <img className="post-image" src={post.attachedSourceUrls[0]} />
       <div className="content-layer">
-        <PostContent color="white" className="post-content" />
+        <PostContent post={post} color="white" className="post-content" />
       </div>
     </Wrapper>
   );
