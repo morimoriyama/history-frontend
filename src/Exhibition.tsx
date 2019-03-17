@@ -105,10 +105,11 @@ const Exhibition: React.FC<RouteComponentProps> = props => {
               <Layout
                 key={i}
                 paddingLeft={i === 0}
-                paddingRight={i === posts.length - 1}
+                paddingRight={i === areaNodes.length - 1}
               >
                 <Padding key={1} gridArea="p1" />
                 <Padding key={2} gridArea="p2" />
+
                 {posts.map((post, i) => {
                   if (post.type === "text") {
                     return (

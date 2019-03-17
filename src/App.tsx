@@ -27,16 +27,16 @@ const App: React.FC = () => {
     <>
       <GlobalStyle />
 
-      <Template
-        render={() => (
-          <Router>
+      <Router>
+        <Template
+          render={() => (
             <Switch>
               <Route exact path="/auth" component={Login} />
               <Route exact path="/" component={Exhibition} />
             </Switch>
-          </Router>
-        )}
-      />
+          )}
+        />
+      </Router>
     </>
   );
 };

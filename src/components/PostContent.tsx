@@ -21,7 +21,7 @@ const Wrapper = styled.div`
   }
 
   .item-content {
-    width: calc(100% - 56px);
+    width: calc(100% - 72px);
 
     .item-header {
       margin-bottom: 4px;
