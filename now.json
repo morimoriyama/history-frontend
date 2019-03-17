@@ -3,7 +3,7 @@
   "version": 2,
   "builds": [{ "src": "package.json", "use": "@now/static-build" }],
   "routes": [
-    {"src": "/static/(.*)", "dest": "build/static/$1"},
+    {"src": "/static/(.*)", "dest": "/static/$1"},
     {"src": "/(.*)", "dest": "/"},
     {"src": "/hoge", "dest": "https://aidemy.net"}
   ],

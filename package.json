@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "parcel public/index.html",
     "build": "react-scripts build",
-    "now-build": "react-scripts build",
+    "now-build": "react-scripts build && cp -a build/ dist",
     "deploy": "now"
   },
   "dependencies": {
