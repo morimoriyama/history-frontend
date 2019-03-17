@@ -1,7 +1,8 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
 import { Post } from "./types/Post";
 
-const apiBaseUrl = "http://moriyama.local:8080/v1";
+const apiBaseUrl = "https://temporal-parser-234720.appspot.com/v1";
+// const apiBaseUrl = "http://moriyama.local:8080/v1";
 
 class Api {
   auth({

@@ -47,6 +47,7 @@ const Login: React.FC<RouteComponentProps> = props => {
 
     api.auth({ code }).then(res => {
       localStorage.setItem("slackAccessToken", res.access_token);
+      localStorage.setItem("teamName", res.team_name);
       props.history.push("/");
     });
   }, []);

@@ -7,6 +7,7 @@ const Wrapper = styled.div`
   position: relative;
   border-radius: 4px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
 
   &,
   * {
@@ -15,6 +16,8 @@ const Wrapper = styled.div`
 
   > .post-image {
     height: 100%;
+    width: 100%;
+    object-fit: cover;
   }
 
   > .content-layer {
@@ -29,13 +32,15 @@ const Wrapper = styled.div`
     align-items: flex-end;
 
     > .post-content {
+      width: 100%;
       opacity: 0;
-      transform: translateY(-8px);
+      transform: translateY(8px);
     }
   }
 
   &:hover {
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    transform: scale(1.01) translateY(-8px);
 
     .content-layer {
       background-color: rgba(0, 0, 0, 0.5);

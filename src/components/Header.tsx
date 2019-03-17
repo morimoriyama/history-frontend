@@ -33,6 +33,7 @@ const Header: React.FC = props => {
       <button
         onClick={() => {
           localStorage.removeItem("slackAccessToken");
+          localStorage.removeItem("teamName");
         }}
       >
         logout
