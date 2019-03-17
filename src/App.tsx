@@ -10,6 +10,7 @@ const GlobalStyle = createGlobalStyle`
   body {
       font-family: "Avenir next", 'Noto Sans JP', sans-serif;
       color: #444;
+      background-color: #fefefe;
       font-size: 16px;
   }
 
