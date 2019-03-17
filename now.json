@@ -2,6 +2,6 @@
   "name": "history-web",
   "version": 2,
   "builds": [{ "src": "package.json", "use": "@now/static-build" }],
-  "routes": [{ "src": "/*", "dest": "/index.html" }],
+  "routes": [{ "src": ".*", "dest": "dist/index.html" }],
   "alias": "historyapp.in"
 }
