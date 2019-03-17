@@ -55,8 +55,7 @@ const Exhibition: React.FC<RouteComponentProps> = props => {
           localStorage.removeItem("teamName");
         }
       });
-    },
-  []);
+  }, []);
 
   const getAreas = () => [
     { id: 1, h: 2, w: 5, type: "img" },
@@ -83,22 +82,27 @@ const Exhibition: React.FC<RouteComponentProps> = props => {
   const _posts = ([] as Post[]).concat(posts);
 
   // textを含む投稿を抽出する
-  const textPosts = _posts.filter((_post: Post) => {
-    return _post.type.toLowerCase() === 'text';
-  }).sort((_post1, _post2) => {
-    if ((_post1.text || '').length < (_post2.text || '').length) return 1;
-    if ((_post1.text || '').length > (_post2.text || '').length) return -1;
-    return 0;
-  }).filter((_post: Post, index: number) => {
-    return index < areasArr.length * 8;
-  });
+  const textPosts = _posts
+    .filter((_post: Post) => {
+      return _post.type.toLowerCase() === "text";
+    })
+    .sort((_post1, _post2) => {
+      if ((_post1.text || "").length < (_post2.text || "").length) return 1;
+      if ((_post1.text || "").length > (_post2.text || "").length) return -1;
+      return 0;
+    })
+    .filter((_post: Post, index: number) => {
+      return index < areasArr.length * 8;
+    });
 
   // text以外のimg投稿を抽出する
-  const imgPosts = _posts.filter((_post: Post) => {
-    return ["png", "jpg", "mp4"].includes(_post.type.toLowerCase());
-  }).filter((_post: Post, index: number) => {
-    return index < areasArr.length * 8;
-  });
+  const imgPosts = _posts
+    .filter((_post: Post) => {
+      return ["png", "jpg", "mp4"].includes(_post.type.toLowerCase());
+    })
+    .filter((_post: Post, index: number) => {
+      return index < areasArr.length * 8;
+    });
 
   const areaNodes = areasArr.map(areas => {
     return areas.map(area => {
@@ -107,16 +111,16 @@ const Exhibition: React.FC<RouteComponentProps> = props => {
         if (extent > 3) {
           // 面積が大きいものは文字列が多い方を利用する
           const _textPost = textPosts.splice(0, 1)[0];
-          if (_textPost.text && _textPost.text.length > extent * 20) {
-            _textPost.text = `${_textPost.text.slice(0, extent * 20)}...`;
-          }
           return { ...area, ..._textPost };
         } else if (extent < 3) {
           // 面積が小さいものは文字列が少な方を利用する
           return { ...area, ...textPosts.splice(textPosts.length - 1, 1)[0] };
         } else {
           // それ以外のものは配列の真ん中を利用する
-          return { ...area, ...textPosts.splice(Math.floor((textPosts.length - 1) / 2), 1)[0] };
+          return {
+            ...area,
+            ...textPosts.splice(Math.floor((textPosts.length - 1) / 2), 1)[0]
+          };
         }
       } else {
         return { ...area, ...imgPosts.splice(0, 1)[0] };

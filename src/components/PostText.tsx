@@ -11,6 +11,8 @@ const Wrapper = styled.div`
   width: 100%;
   height: 100%;
   background-color: #fff;
+  overflow-y: scroll;
+  overflow-x: hidden;
 
   &:hover {
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);

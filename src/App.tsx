@@ -14,6 +14,10 @@ const GlobalStyle = createGlobalStyle`
       font-size: 16px;
   }
 
+  h1,h2,h3 {
+    color: #222;
+  }
+
   a {
     text-decoration: none;
 
